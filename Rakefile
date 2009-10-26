@@ -3,13 +3,17 @@ require 'rake/gempackagetask'
  
 spec = Gem::Specification.new do |s|
   s.name = 'mongrel-cluster-refresh'
-  s.version = '0.0.1'
+  s.version = '0.0.2'
+  s.homepage = 'http://github.com/ryanbriones/mongrel-cluster-refresh'
   s.summary = 'Send graceful restart signal to most resource intensive processes in a mongrel cluster'
-  s.files = FileList['[A-Z]*', 'lib/init.rb']
+  s.files = FileList['[A-Z]*', 'lib/mongrel-cluster-refresh/init.rb']
+  s.autorequire = 'init.rb'
   s.has_rdoc = false
   s.author = 'Ryan Carmelo Briones'
   s.email = 'ryan.briones@brionesandco.com'
-  s.homepage = 'http://brionesandco.com/ryanbriones'
+
+  s.add_dependency 'gem_plugin', '>=0.1'
+  s.add_dependency 'mongrel', '>=0.3.9'
 end
  
 package_task = Rake::GemPackageTask.new(spec) {}
